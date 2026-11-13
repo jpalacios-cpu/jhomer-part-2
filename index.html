@@ -1,0 +1,231 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JP Studio | Login</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #080808, #211044, #080808);
+            color: white;
+        }
+
+        .login-container {
+            width: 90%;
+            max-width: 400px;
+            padding: 40px 30px;
+            background: rgba(20, 20, 25, 0.95);
+            border: 1px solid #7545b8;
+            border-radius: 18px;
+            box-shadow: 0 0 30px rgba(130, 70, 220, 0.3);
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 42px;
+            font-weight: bold;
+            color: #c9a7ff;
+            letter-spacing: 3px;
+        }
+
+        .studio {
+            font-size: 13px;
+            letter-spacing: 6px;
+            margin: 8px 0 30px;
+            color: #aaa;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #aaa;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .input-box {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .input-box label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .input-box input {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #555;
+            border-radius: 8px;
+            background: #111;
+            color: white;
+            outline: none;
+        }
+
+        .input-box input:focus {
+            border-color: #a66cff;
+            box-shadow: 0 0 8px #7545b8;
+        }
+
+        .password-wrapper {
+            position: relative;
+        }
+
+        .password-wrapper input {
+            padding-right: 65px;
+        }
+
+        .show-password {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #c9a7ff;
+            cursor: pointer;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #7545b8, #a66cff);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px #7545b8;
+        }
+
+        #message {
+            margin-top: 18px;
+            font-size: 13px;
+            color: #ffb3b3;
+        }
+
+        .footer {
+            margin-top: 25px;
+            color: #888;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <div class="logo">JP</div>
+        <div class="studio">STUDIO</div>
+
+        <h2>Welcome Back</h2>
+        <p class="subtitle">Sign in to access JP Studio</p>
+
+        <form id="loginForm">
+
+            <div class="input-box">
+                <label for="email">Email Address</label>
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    required
+                >
+            </div>
+
+            <div class="input-box">
+                <label for="password">Password</label>
+
+                <div class="password-wrapper">
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        class="show-password"
+                        id="togglePassword"
+                    >
+                        Show
+                    </button>
+                </div>
+            </div>
+
+            <button type="submit" class="login-btn">
+                LOGIN
+            </button>
+
+            <p id="message"></p>
+
+        </form>
+
+        <div class="footer">
+            CREATE • DESIGN • INSPIRE
+            <br><br>
+            © 2026 JP Studio. All Rights Reserved.
+        </div>
+
+    </div>
+
+    <script>
+        const form = document.getElementById("loginForm");
+        const password = document.getElementById("password");
+        const toggle = document.getElementById("togglePassword");
+        const message = document.getElementById("message");
+
+        toggle.addEventListener("click", function () {
+            if (password.type === "password") {
+                password.type = "text";
+                toggle.textContent = "Hide";
+            } else {
+                password.type = "password";
+                toggle.textContent = "Show";
+            }
+        });
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const email = document.getElementById("email").value.trim();
+            const pass = password.value;
+
+            if (!email || !pass) {
+                message.textContent = "Please complete all fields.";
+                return;
+            }
+
+            message.textContent =
+                "Your login form is ready. Authentication still needs to be connected.";
+        });
+    </script>
+
+</body>
+</html>
